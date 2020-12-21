@@ -1,0 +1,9 @@
+[
+    {
+        "name": "VSSS Robot V2",
+        "description": "Robô autonomo desenhado para competir as modalidade",
+        "created_at": "2016",
+        "image": "vsss_cover.jpg",
+        "links": ["/VSSS-robot-v2"]
+    }
+]
