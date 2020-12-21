@@ -4,7 +4,7 @@
         "description": "Robô autonomo desenhado para competir as modalidade",
         "created_at": "2016",
         "image": "vsss_cover.jpg",
-        "tags": ["tag0", "tag1"]
+        "tags": ["tag0", "tag1"],
         "links": ["/VSSS-robot-v2", "/VSSS-robot-v2-new"]
     }
 ]
