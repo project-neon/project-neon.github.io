@@ -1,1 +1,25 @@
-theme: jekyll-theme-cayman
+title: "Project Neon"
+email: alexsandro2134@gmail.com
+description: "Project Neon tech blog"
+github_username: alexsandr0x
+baseurl: "/"
+url: "https://project-neon.github.io"
+
+plugins:
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
+
+highlighter: rouge
+
+header_pages:
+  - index.md
+  - projetos.md
+  - sobre-nos.md
+  - seja-membro.md
+
+# set the size of the text to 'large' or 'small', default is small
+font-size: small

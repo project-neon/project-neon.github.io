@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+---
+layout: home
+permalink: /
+permalink_name: /home
+title: jekyll-shell-theme
 
-You can use the [editor on GitHub](https://github.com/project-neon/project-neon.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+detail_image: assets/theme_logo.svg
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+---
 
-### Markdown
+# jekyll-shell-theme
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**Jekyll Shell Theme** is an open source light-weight customizable jekyll theme for your site! You can use it to spice up your personal profiles, project pages or just about anything!
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/project-neon/project-neon.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+No prior web-dev knowledge is required to use the theme to make a website, just follow the instructions in [/read-me](read-me) to set up your web page and start filling it with hackery content! You can see sone features of the theme in [/preview](preview).
