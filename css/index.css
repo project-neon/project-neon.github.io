@@ -2,6 +2,11 @@ body {
     font-family: 'Open Sans';
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .has-figure-shadow {
     box-shadow: 0 15px 200px #1D913B;
 }
