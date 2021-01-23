@@ -171,6 +171,14 @@ a {
     color: #1D913B;
 }
 
+p {
+    letter-spacing: 0.1vw;
+}
+
+.is-gray {
+    color: #77767c !important;
+}
+
 .is-title:hover {
     cursor: pointer;
     color: white !important;
@@ -178,16 +186,6 @@ a {
     font-weight: normal;
     text-align: center;
     text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #fff, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 50px #28B252, 0 0 60px #28B252, 0 0 70px #28B252;
-}
-
-.figcaption {
-    margin: 0 auto;
-    padding: 5px;
-    max-width: 320px;
-    position: relative;
-    top: 45px;
-    background-color: #1D913B;
-
 }
 
 .is-image-centered {
