@@ -172,7 +172,6 @@ body {
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
-    transition: 0.35 all;
     animation: neon 3s infinite;
 }
 
