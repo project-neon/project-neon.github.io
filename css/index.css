@@ -156,7 +156,7 @@ a {
     font-weight: normal;
     text-align: center;
     transition: 0.35 all;
-    animation: neon 3s infinite;
+    text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #fff, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 50px #28B252, 0 0 60px #28B252, 0 0 70px #28B252;
 }
 
 
@@ -177,7 +177,7 @@ a {
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
-    animation: neon 3s infinite;
+    text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #fff, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 50px #28B252, 0 0 60px #28B252, 0 0 70px #28B252;
 }
 
 .figcaption {

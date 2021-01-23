@@ -4,17 +4,8 @@
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
+    text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #fff, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 50px #28B252, 0 0 60px #28B252, 0 0 70px #28B252;
   }
-  
-  @-webkit-keyframes neon {
-    from {
-      text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #fff, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 50px #28B252, 0 0 60px #28B252, 0 0 70px #28B252;
-    }
-    to {
-      text-shadow: -1px -1px 1px #fff, -1px 1px 1px  #28B252, -1px 1px 1px #28B252, 1px -1px 1px #28B252, 0 0 60px #28B252, 0 0 70px #28B252, 0 0 80px #28B252;
-    }
-  }
-
 
 /*POP ART EFFECT*/
 .pop-art {
