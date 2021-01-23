@@ -193,3 +193,7 @@ body {
 .footer-p-color {
     color: #57565E;
 }
+
+.partner-logo {
+    display: inline-block;
+}
