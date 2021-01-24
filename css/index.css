@@ -200,3 +200,10 @@ p {
 .partner-logo {
     display: inline-block;
 }
+
+@media screen and (min-width: 800px) {
+   .is-size-1 {
+       font-size: 4.5rem !important;
+       font-weight: 900 !important;
+   }
+}
