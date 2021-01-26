@@ -77,6 +77,7 @@ a {
 
 .offset-green:hover {
     background-color: #28B252;
+    color: white;
 }
 
 .offset-green>.material-icons {
@@ -100,6 +101,7 @@ a {
 
 .offset-gray:hover {
     background-color: #77767c;
+    color: white;
 }
 
 .offset-gray>.material-icons {
@@ -110,6 +112,7 @@ a {
 
 
 .scroll {
+    display: block;
     text-transform: uppercase;
 }
 
