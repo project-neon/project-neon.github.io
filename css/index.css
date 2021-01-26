@@ -73,6 +73,7 @@ a {
     white-space: nowrap;
     text-overflow: ellipsis;
     transition: all .35s;
+    color: white;
 }
 
 .offset-green:hover {
@@ -97,6 +98,7 @@ a {
     width: 192px;
     box-shadow: -5px 5px 0 0px black, -5px 5px 0 1px #57565E;
     transition: all .35s;
+    color: white;
 }
 
 .offset-gray:hover {
