@@ -1,0 +1,2277 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ssl/">
+      
+      
+        <link rel="next" href="../roadmap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Arquitetura - SSL Robotics Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arquitetura-do-robo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SSL Robotics Docs" class="md-header__button md-logo" aria-label="SSL Robotics Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SSL Robotics Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitetura
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SSL Robotics Docs" class="md-nav__button md-logo" aria-label="SSL Robotics Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SSL Robotics Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projeto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-blocos-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama de Blocos Geral
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagrama de Blocos Geral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-previstos-ainda-nao-implementados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes previstos (ainda não implementados)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locomocao-omnidirecional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locomoção Omnidirecional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locomoção Omnidirecional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disposicao-das-rodas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disposição das Rodas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#montagem-da-roda-sueca-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Montagem da Roda Sueca 90°
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suporte-de-fixacao-do-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suporte de Fixação do Motor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-e-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motor e Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor e Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplefoc-controle-de-campo-orientado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SimpleFOC — Controle de Campo Orientado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder-objetivo-nao-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder (Objetivo — Não Implementado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder (Objetivo — Não Implementado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-em-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status: Em Desenvolvimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kicker-sistema-de-chute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kicker — Sistema de Chute
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kicker — Sistema de Chute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aviso-substituicao-prevista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aviso — Substituição Prevista
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistema-atual-visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema Atual — Visão Geral
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-de-carregamento-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio de Carregamento (Sistema Atual)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-de-descarga-chute-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio de Descarga — Chute (Sistema Atual)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguranca-com-capacitores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segurança com Capacitores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dribler-objetivo-nao-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dribler (Objetivo — Não Implementado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dribler (Objetivo — Não Implementado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-em-desenvolvimento_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status: Em Desenvolvimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-devera-ser-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que deverá ser implementado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eletronica-geral-pcbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eletrônica Geral — PCBs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eletrônica Geral — PCBs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-e-recursos-nao-implementados-na-pcb-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes e recursos não implementados na PCB atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mecânica
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mecânica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/locomocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locomoção
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/kicker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kicker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/dribler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dribler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/cinematica-e-mecanismos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cinemática e mecanismos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mecanica/projeto-e-fea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projeto e FEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eletrônica
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Eletrônica
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/locomocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locomoção
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/kicker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kicker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/dribler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dribler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/componentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Componentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/esquematico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Esquemáticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eletronica/pcb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/locomocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locomoção
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/kicker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kicker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/dribler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dribler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/fundamentos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/estrategia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estratégia e visão
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/filtros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estudos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Estudos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos/mecanica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mecânica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos/eletronica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eletrônica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estudos/programacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../referencias/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referências
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-blocos-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrama de Blocos Geral
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagrama de Blocos Geral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-previstos-ainda-nao-implementados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes previstos (ainda não implementados)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locomocao-omnidirecional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locomoção Omnidirecional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locomoção Omnidirecional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disposicao-das-rodas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disposição das Rodas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#montagem-da-roda-sueca-90" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Montagem da Roda Sueca 90°
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suporte-de-fixacao-do-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suporte de Fixação do Motor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motor-e-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Motor e Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Motor e Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplefoc-controle-de-campo-orientado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SimpleFOC — Controle de Campo Orientado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encoder-objetivo-nao-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder (Objetivo — Não Implementado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder (Objetivo — Não Implementado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-em-desenvolvimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status: Em Desenvolvimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kicker-sistema-de-chute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kicker — Sistema de Chute
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kicker — Sistema de Chute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aviso-substituicao-prevista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aviso — Substituição Prevista
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistema-atual-visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema Atual — Visão Geral
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-de-carregamento-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio de Carregamento (Sistema Atual)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estagio-de-descarga-chute-sistema-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estágio de Descarga — Chute (Sistema Atual)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguranca-com-capacitores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Segurança com Capacitores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dribler-objetivo-nao-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dribler (Objetivo — Não Implementado)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dribler (Objetivo — Não Implementado)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-em-desenvolvimento_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status: Em Desenvolvimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-devera-ser-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que deverá ser implementado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eletronica-geral-pcbs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eletrônica Geral — PCBs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eletrônica Geral — PCBs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#componentes-e-recursos-nao-implementados-na-pcb-atual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Componentes e recursos não implementados na PCB atual
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="arquitetura-do-robo">ARQUITETURA DO ROBÔ</h1>
+<p>O robô do time é composto por três subsistemas principais: Locomoção, Kicker e Dribler (em desenvolvimento). Esta seção apresenta como cada sistema está estruturado e como eles se integram.</p>
+<h2 id="diagrama-de-blocos-geral">Diagrama de Blocos Geral</h2>
+<p>O sistema eletrônico é organizado de forma modular, com os seguintes blocos principais implementados atualmente:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bateria LiPo (14,8 V)</td>
+<td>Fonte de energia principal do robô</td>
+</tr>
+<tr>
+<td>ESP32</td>
+<td>Microcontrolador principal — recebe dados da visão via rádio e coordena os STM32</td>
+</tr>
+<tr>
+<td>STM32 (×2)</td>
+<td>Cada STM32 controla 2 motores BLDC via SimpleFOC + Driver DRV8313</td>
+</tr>
+<tr>
+<td>Driver DRV8313 (×4)</td>
+<td>Aciona as fases do motor BLDC usando interface 3×PWM</td>
+</tr>
+<tr>
+<td>Motor BLDC GBM2804H (×4)</td>
+<td>Motores das rodas suecas</td>
+</tr>
+<tr>
+<td>Step-up</td>
+<td>Eleva tensão da bateria para alimentação dos motores e kicker</td>
+</tr>
+</tbody>
+</table>
+<h3 id="componentes-previstos-ainda-nao-implementados">Componentes previstos (ainda não implementados)</h3>
+<ul>
+<li>Medidor de bateria — monitoramento do nível de carga.</li>
+<li>Encoder MT6701CT (×4) — leitura de posição angular via I2C.</li>
+<li>Dribler — motor com rolo para controle da bola.</li>
+<li>Kicker de alta tensão com LT3751 e IGBTs (evolução do kicker atual).</li>
+</ul>
+<h2 id="locomocao-omnidirecional">Locomoção Omnidirecional</h2>
+<p>O robô utiliza 4 rodas suecas 90° para locomoção omnidirecional, permitindo movimento em qualquer direção independente da orientação do robô.</p>
+<h3 id="disposicao-das-rodas">Disposição das Rodas</h3>
+<ul>
+<li>Rodas traseiras: ângulo de 90° entre si.</li>
+<li>Rodas dianteiras: ângulo de 120° entre si.</li>
+<li>Ângulo de 75° das rodas dianteiras em relação ao eixo X do robô.</li>
+</ul>
+<h3 id="montagem-da-roda-sueca-90">Montagem da Roda Sueca 90°</h3>
+<p>Cada roda é composta por:</p>
+<ul>
+<li>Roda Parte A — corpo principal com canal para o arame e 24 espaços para rodinhas.</li>
+<li>Roda Parte B — tampa sem canal, fixada por parafusos no motor.</li>
+<li>Arame bitola 1,5 mm² — eixo das rodinhas.</li>
+<li>24 rodinhas (roldanas) com oring de borracha como pneu.</li>
+<li>Parafusos de fixação.</li>
+</ul>
+<h3 id="suporte-de-fixacao-do-motor">Suporte de Fixação do Motor</h3>
+<p>O suporte acompanha as furações do motor e possui:</p>
+<ul>
+<li>Furos de fixação no chassi para facilitar manutenção.</li>
+<li>Furos para a placa do encoder na parte traseira.</li>
+<li>Furo central para o imã do encoder.</li>
+</ul>
+<h2 id="motor-e-driver">Motor e Driver</h2>
+<table>
+<thead>
+<tr>
+<th>Especificação</th>
+<th>Valor — Motor GBM2804H-100T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>Brushless DC (BLDC) — Gimbal Motor</td>
+</tr>
+<tr>
+<td>Dimensões</td>
+<td>35 mm × 15 mm</td>
+</tr>
+<tr>
+<td>Configuração</td>
+<td>12N14P (12 entalhos, 14 pólos)</td>
+</tr>
+<tr>
+<td>Resistência de fase</td>
+<td>11,2 Ω</td>
+</tr>
+<tr>
+<td>Tensão máxima</td>
+<td>14,8 V</td>
+</tr>
+<tr>
+<td>Corrente máxima</td>
+<td>5 A</td>
+</tr>
+<tr>
+<td>Velocidade máxima</td>
+<td>2.180 RPM</td>
+</tr>
+<tr>
+<td>Peso</td>
+<td>41,5 g</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Especificação</th>
+<th>Valor — Driver DRV8313</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arquitetura</td>
+<td>Integrated FET (3 half-bridges)</td>
+</tr>
+<tr>
+<td>Interface de controle</td>
+<td>3×PWM</td>
+</tr>
+<tr>
+<td>Corrente de pico máx.</td>
+<td>3 A</td>
+</tr>
+<tr>
+<td>Tensão de alimentação</td>
+<td>8 V – 65 V</td>
+</tr>
+<tr>
+<td>Temperatura de operação</td>
+<td>-40 °C a +125 °C</td>
+</tr>
+<tr>
+<td>Resistência ON (HS+LS)</td>
+<td>480 mΩ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="simplefoc-controle-de-campo-orientado">SimpleFOC — Controle de Campo Orientado</h3>
+<p>O acionamento dos motores usa a biblioteca SimpleFOClibrary implementando FOC (Field Oriented Control). O FOC garante controle suave de velocidade, alto torque e boa responsividade.</p>
+<ul>
+<li>Cada STM32 controla 2 motores via BLDCDriver3PWM.</li>
+<li>Pares de polos: 7 (motor 12N14P → 7 pares de polos).</li>
+<li>Resistência de fase configurada: 10 Ω | KV configurado: 60 rpm/V.</li>
+<li>Modo de controle atual: velocity_openloop (sem encoder ativo).</li>
+<li>Corrente máxima por motor: 300 mA.</li>
+</ul>
+<h2 id="encoder-objetivo-nao-implementado">Encoder (Objetivo — Não Implementado)</h2>
+<h3 id="status-em-desenvolvimento">Status: Em Desenvolvimento</h3>
+<p>O encoder magnético ainda não está instalado no robô. A integração dos encoders é um dos próximos objetivos do time e permitirá fechar a malha de controle de velocidade (closed-loop), tornando o controle dos motores mais preciso e estável.</p>
+<p>O componente previsto é o encoder magnético MT6701CT-STD-R, que lê a posição angular do motor por efeito Hall e comunica via protocolo I2C. Ele será fixado no suporte traseiro do motor com um imã acoplado ao eixo.</p>
+<ul>
+<li>Protocolo: I2C — simplifica a fiação, usando apenas 2 fios de dados.</li>
+<li>Biblioteca disponível para Arduino IDE (github.com/noranraskin/MT6701).</li>
+<li>Cada encoder fornece a posição angular absoluta do motor em tempo real.</li>
+<li>Com o encoder ativo, o modo de controle do SimpleFOC muda de velocity_openloop para velocity (closed-loop com PID).</li>
+</ul>
+<h2 id="kicker-sistema-de-chute">Kicker — Sistema de Chute</h2>
+<h3 id="aviso-substituicao-prevista">Aviso — Substituição Prevista</h3>
+<p>O sistema de chute atual (descrito abaixo) será substituído por um sistema mais robusto baseado no CI LT3751 com IGBTs, capaz de carregar os capacitores a até 244 V e entregar mais energia à bobina. A documentação do sistema futuro está nos esquemáticos de referência do time.</p>
+<h3 id="sistema-atual-visao-geral">Sistema Atual — Visão Geral</h3>
+<p>O kicker atual é um circuito de média tensão com capacitores que, ao descarregar sobre uma bobina solenóide, empurra a bola. O limite regulamentar é 6,5 m/s.</p>
+<h3 id="estagio-de-carregamento-sistema-atual">Estágio de Carregamento (Sistema Atual)</h3>
+<ul>
+<li>Step-up: eleva 14 V da bateria para 50 V.</li>
+<li>Relé SRD-12VDC-SL-C: controla a passagem dos 50 V para o circuito de carga.</li>
+<li>Transistor 2N2222A (Q4): aciona o relé via sinal <code>charge</code> do MCU.</li>
+<li>Resistor de carga RZA01 (50 Ω): limita corrente de carregamento a ~1 A.</li>
+<li>Fusível F1 (2 A): proteção do circuito de carga.</li>
+<li>3 capacitores 4700 µF / 63 V em paralelo: banco de energia para o chute.</li>
+<li>Tempo de carregamento: <span class="arithmatex">\(T = R \times 15 \times C \approx 3,5\ \text{s}\)</span> (com 50 Ω e 3×4700 µF).</li>
+</ul>
+<h3 id="estagio-de-descarga-chute-sistema-atual">Estágio de Descarga — Chute (Sistema Atual)</h3>
+<ul>
+<li>MOSFET IRLZ44N (Q3): conecta o banco de capacitores à bobina solenóide.</li>
+<li>2× transistores 2N2222A (Q1, Q2) em configuração Totem-Pole: lógica invertida para acionar o gate do MOSFET.</li>
+<li>Diodo 1N5408: proteção contra corrente reversa da bobina.</li>
+<li>Fusível F2 (3 A): proteção durante a descarga.</li>
+<li>Sinal de controle: pino <code>kicker</code> do MCU.</li>
+</ul>
+<h3 id="seguranca-com-capacitores">Segurança com Capacitores</h3>
+<p>O banco de capacitores carregado a 50 V representa risco elétrico. A chave SwitchK1A permite descarregar manualmente os capacitores antes de manusear o robô. Esta chave deve ser aberta SEMPRE antes de qualquer manutenção.</p>
+<h2 id="dribler-objetivo-nao-implementado">Dribler (Objetivo — Não Implementado)</h2>
+<h3 id="status-em-desenvolvimento_1">Status: Em Desenvolvimento</h3>
+<p>O dribler ainda não está implementado no robô atual. É um dos objetivos do time para próximas iterações. A descrição abaixo apresenta o conceito e o que deverá ser implementado.</p>
+<p>O dribler é um motor que gira um rolo em contato com a bola, imprimindo efeito (backspin) para mantê-la próxima ao robô durante a movimentação. Ele é essencial para manobras de ataque e drible em alta velocidade.</p>
+<h3 id="o-que-devera-ser-implementado">O que deverá ser implementado</h3>
+<ul>
+<li>Motor BLDC dedicado ao dribler, controlado por um STM32 e driver próprio.</li>
+<li>Sistema de detecção de bola por IR (Ball Detection) para identificar quando a bola está em contato com o rolo.</li>
+<li>Sensor Ball Detection: LED IR (VSMB2000) + fotodiodo (TEMD1000) + AmpOp transimpedância (OPA320).</li>
+<li>Rolo mecânico com material e geometria adequados para maximizar o atrito com a bola sem danificá-la.</li>
+<li>Integração do sinal de <code>bola detectada</code> ao firmware para habilitar jogadas de passe e chute com controle.</li>
+</ul>
+<h2 id="eletronica-geral-pcbs">Eletrônica Geral — PCBs</h2>
+<p>O projeto é organizado em PCBs modulares. A placa principal atual (PCB B0) reúne os seguintes componentes implementados:</p>
+<ul>
+<li>ESP32: gerenciamento central, comunicação rádio.</li>
+<li>2× STM32 (BluePill): controle FOC dos 4 motores de locomoção.</li>
+<li>Step-up de alimentação dos motores.</li>
+</ul>
+<h3 id="componentes-e-recursos-nao-implementados-na-pcb-atual">Componentes e recursos não implementados na PCB atual</h3>
+<ul>
+<li>Medidor de bateria — previsto, mas ainda não implementado.</li>
+<li>Encoder — ainda não instalado (ver seção 2.5).</li>
+<li>Dribler — sem placa própria ainda (ver seção 2.7).</li>
+<li>Kicker de alta tensão com LT3751 — sistema futuro.</li>
+</ul>
+<p>Os esquemáticos do projeto estão disponíveis no repositório do time. Ver seção de Pendências para links.</p>
+<h1 id="programacao-visao-geral-do-software">PROGRAMAÇÃO — VISÃO GERAL DO SOFTWARE</h1>
+<p>O software do robô é dividido em duas camadas principais: o Firmware (embarcado nos microcontroladores) e o Software de Estratégia (rodando em computador externo).</p>
+<h2 id="firmware-embarcado">Firmware (Embarcado)</h2>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP32 — Main Firmware</td>
+<td>Recebe comandos via rádio (WiFi/RF), distribui para STM32s via UART</td>
+</tr>
+<tr>
+<td>STM32 — Motor Control (×2)</td>
+<td>Executa SimpleFOC para controle FOC de 2 motores cada, modo open-loop atual</td>
+</tr>
+<tr>
+<td>STM32 — Kicker</td>
+<td>Gerencia ciclos de carga/disparo do kicker via pinos <code>charge</code> e <code>kicker</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="itens-em-desenvolvimento-firmware">Itens em desenvolvimento (Firmware)</h3>
+<ul>
+<li>Encoder MT6701CT: integrar leitura I2C para fechar malha de controle de velocidade.</li>
+<li>Dribler: adicionar controle de motor + leitura do sensor de bola (Ball Detection IR).</li>
+<li>Sensor de bola via IR: detectar presença da bola no dribler.</li>
+<li>LEDs indicativos: estado de bateria, recepção de dados, modo de operação.</li>
+<li>Comunicação STM32 → ESP32: envio de sensor de temperatura.</li>
+<li>Modo debugger: configurar e calibrar robô com ele ligado.</li>
+<li>Verificação de gargalos de comunicação.</li>
+</ul>
+<h2 id="software-de-estrategia-neonfc">Software de Estratégia (NeonFC)</h2>
+<p>O software externo em Python recebe dados do SSL-Vision, processa a estratégia e envia comandos de velocidade aos robôs via rede.</p>
+<h3 id="controle">Controle</h3>
+<ul>
+<li>Implementar e estudar controle FOC em malha fechada.</li>
+<li>Estudar tese RoboCIn para referências de controle.</li>
+<li>Implementar controladores de velocidade (PID).</li>
+</ul>
+<h3 id="estrategia">Estratégia</h3>
+<ul>
+<li>Implementar algoritmo Húngaro para atribuição de funções a robôs.</li>
+<li>Adaptar sistema de chute para o robô físico.</li>
+<li>Melhorar pathfinding (DrunkWalk / planejamento de trajetória).</li>
+<li>Estudo de Machine Learning para probabilidade de gol (xG).</li>
+</ul>
+<h3 id="interface">Interface</h3>
+<ul>
+<li>Visualização do campo corrigida.</li>
+<li>Recepção direta de pacotes da visão SSL-Vision.</li>
+<li>Comunicação NeonFC ↔ Interface com botão de start/stop.</li>
+<li>Controle do robô via interface gráfica.</li>
+</ul>
+<h3 id="filtros">Filtros</h3>
+<ul>
+<li>Implementar filtro de Kalman para suavização de posição.</li>
+<li>Implementar estimativa de aceleração da bola.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
